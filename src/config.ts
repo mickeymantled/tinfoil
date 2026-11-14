@@ -30,8 +30,8 @@ export const config = {
   contractAddress: '3D5nV4rQuNJezr6BGfxgQY3qqrtigmEnV2gqSi7ipump',
 
   links: {
-    /** Where the BUY button goes (Jupiter, Raydium, pump.fun, ...). PLACEHOLDER. */
-    buy: 'https://example.com/REPLACE_WITH_BUY_LINK',
+    /** Where the BUY button goes: the token's pump.fun page. */
+    buy: 'https://pump.fun/coin/3D5nV4rQuNJezr6BGfxgQY3qqrtigmEnV2gqSi7ipump',
 
     /** DEX chart (DexScreener pair page). */
     chart: 'https://dexscreener.com/solana/FjqAhBSdkceLQ9CcTqDgFKNLFZpNzHrxSpXcnSKLrTbW',
