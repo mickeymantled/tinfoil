@@ -1,0 +1,470 @@
+/* Incident feed page. Shared classes (.panel, .folder, .paper, .tag, .btn ...) live in src/index.css. */
+
+/* ---------- Filters ---------- */
+
+.feed-filters {
+  display: flex;
+  flex-direction: column;
+  gap: 0.875rem;
+}
+
+.feed-filters__search {
+  display: flex;
+  gap: 0.5rem;
+  align-items: stretch;
+}
+
+.feed-filters__search .input {
+  min-width: 0;
+  flex: 1 1 auto;
+}
+
+.feed-filters__toggle {
+  flex: 0 0 auto;
+}
+
+.feed-filters__panel {
+  display: none;
+  flex-direction: column;
+  gap: 0.875rem;
+}
+
+.feed-filters__panel.is-open {
+  display: flex;
+}
+
+@media (min-width: 640px) {
+  .feed-filters__toggle {
+    display: none;
+  }
+  .feed-filters__panel {
+    display: flex;
+  }
+}
+
+.feed-filters__group {
+  border: 0;
+  margin: 0;
+  padding: 0;
+  min-width: 0;
+}
+
+.feed-filters__legend {
+  display: block;
+  margin-bottom: 0.375rem;
+  padding: 0;
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
+  color: #1fa64d;
+}
+
+/* Chips: one horizontally scrollable row on phones, wrapping from sm up. */
+.feed-filters__chips {
+  display: flex;
+  gap: 0.5rem;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scrollbar-width: thin;
+  padding: 2px 2px 6px;
+  margin: 0 -2px;
+  -webkit-overflow-scrolling: touch;
+}
+
+@media (min-width: 640px) {
+  .feed-filters__chips {
+    flex-wrap: wrap;
+    overflow-x: visible;
+  }
+}
+
+.feed-filters .feed-chip {
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  min-height: 2.75rem;
+  padding: 0.25rem 0.75rem;
+  font-size: 0.75rem;
+  white-space: nowrap;
+  cursor: pointer;
+  opacity: 0.62;
+  border: 1px solid transparent;
+  transition: opacity 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
+}
+
+.feed-filters .feed-chip:hover {
+  opacity: 0.9;
+}
+
+.feed-filters .feed-chip.is-on {
+  opacity: 1;
+  border-color: currentColor;
+  box-shadow: 0 0 10px -2px currentColor;
+}
+
+.feed-chip__count {
+  font-size: 0.75em;
+  opacity: 0.8;
+  font-variant-numeric: tabular-nums;
+}
+
+.feed-filters__row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.875rem 1rem;
+  align-items: flex-end;
+}
+
+.feed-filters__source {
+  flex: 1 1 14rem;
+  min-width: 0;
+}
+
+/* Segmented control */
+.feed-seg {
+  display: inline-flex;
+  border: 1px solid #0f5c2a;
+}
+
+.feed-seg__btn {
+  min-height: 2.75rem;
+  min-width: 3.5rem;
+  padding: 0 0.875rem;
+  font-family: VT323, 'IBM Plex Mono', monospace;
+  font-size: 1.25rem;
+  line-height: 1;
+  color: #b4f5c8;
+  background: #080b08;
+  cursor: pointer;
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+.feed-seg__btn + .feed-seg__btn {
+  border-left: 1px solid #0f5c2a;
+}
+
+.feed-seg__btn:hover {
+  background: #151c15;
+}
+
+.feed-seg__btn.is-on {
+  background: #3dff7a;
+  color: #040604;
+}
+
+.feed-seg__btn:focus-visible {
+  outline: 2px solid #ffb000;
+  outline-offset: 2px;
+  position: relative;
+  z-index: 1;
+}
+
+.feed-filters__clear {
+  margin-left: auto;
+}
+
+/* ---------- Status line ---------- */
+
+.feed-status {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.25rem 1rem;
+  margin-top: 1.25rem;
+  font-size: 0.875rem;
+  letter-spacing: 0.06em;
+}
+
+.feed-status__count {
+  font-family: VT323, 'IBM Plex Mono', monospace;
+  font-size: 1.75rem;
+  line-height: 1;
+  color: #b4f5c8;
+}
+
+.feed-status__updated {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.25rem 0.375rem;
+  color: #c9d8c9;
+  font-variant-numeric: tabular-nums;
+}
+
+.feed-status__lost {
+  flex-basis: 100%;
+  color: #ffb000;
+  font-size: 0.8125rem;
+}
+
+/* ---------- NEW INTEL pill ---------- */
+
+.feed-pill-wrap {
+  position: sticky;
+  top: calc(var(--nav-h, 3.5rem) + 0.5rem);
+  z-index: 30;
+  height: 0;
+  display: flex;
+  justify-content: center;
+  overflow: visible;
+}
+
+.feed-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  min-height: 2.75rem;
+  padding: 0.25rem 1.25rem;
+  margin-top: 0.5rem;
+  border-radius: 9999px;
+  border: 2px solid #ffd0d0;
+  background: #ff2e2e;
+  color: #fff;
+  font-family: VT323, 'IBM Plex Mono', monospace;
+  font-size: 1.5rem;
+  line-height: 1;
+  letter-spacing: 0.06em;
+  white-space: nowrap;
+  cursor: pointer;
+  box-shadow: 0 0 18px rgba(255, 46, 46, 0.6), 0 6px 18px rgba(0, 0, 0, 0.6);
+  animation: feed-pill-in 0.25s ease-out, feed-pill-pulse 1.8s ease-in-out 0.25s infinite;
+}
+
+.feed-pill:hover {
+  background: #e01f1f;
+}
+
+.feed-pill:focus-visible {
+  outline: 3px solid #ffb000;
+  outline-offset: 3px;
+}
+
+/* The REC dot is red; on a red pill make it white. */
+.feed-pill .rec-dot {
+  background: #fff;
+}
+
+@keyframes feed-pill-in {
+  from {
+    transform: translateY(-8px);
+    opacity: 0;
+  }
+}
+
+@keyframes feed-pill-pulse {
+  50% {
+    box-shadow: 0 0 30px rgba(255, 46, 46, 0.95), 0 6px 18px rgba(0, 0, 0, 0.6);
+  }
+}
+
+.feed-list-top {
+  height: 1px;
+  margin-top: 1rem;
+  scroll-margin-top: calc(var(--nav-h, 3.5rem) + 4.5rem);
+  outline: none;
+}
+
+/* ---------- Case file grid ---------- */
+
+.feed-grid {
+  list-style: none;
+  margin: 1.25rem 0 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 2.75rem 1.75rem;
+}
+
+@media (min-width: 1024px) {
+  .feed-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.feed-grid > li {
+  min-width: 0;
+}
+
+/* ---------- Case file card ---------- */
+
+.case-file {
+  position: relative;
+  padding: 0.75rem 0.625rem 0.75rem;
+  transform: rotate(var(--tilt, 0deg));
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+@media (min-width: 640px) {
+  .case-file {
+    padding: 0.875rem 0.875rem 1rem;
+  }
+}
+
+.case-file:hover,
+.case-file:focus-within {
+  transform: none;
+}
+
+.case-file__tab {
+  font-family: 'Special Elite', 'Courier New', monospace;
+  letter-spacing: 0.06em;
+  white-space: nowrap;
+}
+
+.case-file__paper {
+  position: relative;
+  height: 100%;
+  padding: 1.125rem 1rem 1.25rem;
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+@media (min-width: 640px) {
+  .case-file__paper {
+    padding: 1.375rem 1.5rem 1.5rem;
+  }
+}
+
+.case-file__meta {
+  font-family: 'IBM Plex Mono', ui-monospace, monospace;
+  font-size: 0.8125rem;
+  line-height: 1.5;
+  color: #4a3b28;
+  padding-right: 3.5rem; /* keep clear of the NEW badge / clip */
+}
+
+.case-file__source {
+  font-weight: 600;
+  color: #221a11;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.case-file__title {
+  margin-top: 0.5rem;
+  font-family: 'Special Elite', 'Courier New', monospace;
+  font-size: 1.1875rem;
+  line-height: 1.4;
+  font-weight: 400;
+  color: #221a11;
+  /* headlines are shown exactly as published: no transform, no clamping */
+  text-transform: none;
+  overflow-wrap: anywhere;
+}
+
+@media (min-width: 640px) {
+  .case-file__title {
+    font-size: 1.3125rem;
+  }
+}
+
+.case-file__title a {
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-color: rgba(34, 26, 17, 0.35);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+}
+
+.case-file__title a:hover {
+  text-decoration-color: #b3201c;
+  text-decoration-thickness: 2px;
+}
+
+.case-file__title a:focus-visible,
+.case-file__open:focus-visible {
+  outline: 2px solid #b3201c;
+  outline-offset: 3px;
+}
+
+.case-file__tags {
+  list-style: none;
+  margin: 0.75rem 0 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.375rem;
+}
+
+.case-file__snippet {
+  margin-top: 0.75rem;
+  color: #221a11;
+  overflow-wrap: anywhere;
+}
+
+.case-file__open {
+  margin-top: 1rem;
+}
+
+.case-file__clip {
+  top: -0.75rem;
+  right: 1.25rem;
+  z-index: 2;
+}
+
+.case-file__stain {
+  top: auto;
+  right: 0.25rem;
+  bottom: 0.25rem;
+  width: 120px;
+  height: 120px;
+  opacity: 0.55;
+}
+
+/* Newly inserted from NEW INTEL */
+.case-file__new {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  z-index: 3;
+  padding: 0.125rem 0.5rem;
+  border: 2px solid #b3201c;
+  color: #b3201c;
+  font-family: 'Special Elite', 'Courier New', monospace;
+  font-size: 0.875rem;
+  letter-spacing: 0.12em;
+  transform: rotate(6deg);
+  background: rgba(239, 230, 207, 0.85);
+  animation: case-file-fade 30s linear forwards;
+}
+
+.case-file--fresh {
+  box-shadow: 0 0 0 2px #ff2e2e, 0 0 22px rgba(255, 46, 46, 0.45);
+  animation: case-file-glow 30s linear forwards;
+}
+
+@keyframes case-file-fade {
+  0%,
+  75% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes case-file-glow {
+  0%,
+  75% {
+    box-shadow: 0 0 0 2px #ff2e2e, 0 0 22px rgba(255, 46, 46, 0.45);
+  }
+  100% {
+    box-shadow: 0 0 0 0 transparent;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .case-file,
+  .feed-filters .feed-chip,
+  .feed-seg__btn {
+    transition: none;
+  }
+  .feed-pill {
+    animation: none;
+  }
+  .case-file__new,
+  .case-file--fresh {
+    animation: none;
+  }
+}
