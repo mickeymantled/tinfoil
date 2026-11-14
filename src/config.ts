@@ -38,9 +38,6 @@ export const config = {
 
     /** X (Twitter) profile. */
     x: 'https://x.com/tinfoilhatonx',
-
-    /** Telegram group or channel. PLACEHOLDER. */
-    telegram: 'https://t.me/REPLACE_WITH_TELEGRAM',
   },
 
   /** Prefilled text for the hat generator's "Share on X" button. The site URL is appended automatically. */

@@ -14,7 +14,6 @@ const LINKS: LinkDef[] = [
   { key: 'buy', label: `BUY ${config.ticker}`, href: config.links.buy, className: 'btn-primary home-links__buy' },
   { key: 'chart', label: 'CHART', href: config.links.chart, className: 'btn-ghost' },
   { key: 'x', label: 'X', href: config.links.x, className: 'btn-ghost' },
-  { key: 'telegram', label: 'TELEGRAM', href: config.links.telegram, className: 'btn-ghost' },
 ];
 
 function HeroLinks() {

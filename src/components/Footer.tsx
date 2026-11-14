@@ -7,7 +7,6 @@ const EXTERNAL = [
   { key: 'buy', label: `Buy ${config.ticker}`, href: config.links.buy },
   { key: 'chart', label: 'Chart', href: config.links.chart },
   { key: 'x', label: 'X / Twitter', href: config.links.x },
-  { key: 'telegram', label: 'Telegram', href: config.links.telegram },
 ] as const;
 
 export function Footer() {

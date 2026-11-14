@@ -68,7 +68,7 @@ Every token-specific value lives in `src/config.ts`:
 | `tokenName`, `ticker`, `chain` | Shown across the site, in the page title and on the social card |
 | `tagline`, `description` | Hero tagline; SEO and social description |
 | `contractAddress` | Shown in the hero with a copy button |
-| `links.buy`, `links.chart`, `links.x`, `links.telegram` | The hero and footer buttons |
+| `links.buy`, `links.chart`, `links.x` | The hero and footer buttons |
 | `shareText` | Prefilled text for the hat generator's "Share on X" button |
 | `faceDetection` | `true` lets the hat generator try to auto-place the hat with in-browser face detection |
 
