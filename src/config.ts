@@ -26,18 +26,18 @@ export const config = {
   description:
     'TINFOIL HAT ($TINFOIL) is the cyber incident coin on Solana: a tinfoil hat PFP generator, a live monitor of real cyber incidents, and a grid-down survival guide.',
 
-  /** Token mint / contract address. PLACEHOLDER: paste the real address here. */
-  contractAddress: 'PASTE_CONTRACT_ADDRESS_HERE',
+  /** Token mint / contract address. */
+  contractAddress: '3D5nV4rQuNJezr6BGfxgQY3qqrtigmEnV2gqSi7ipump',
 
   links: {
     /** Where the BUY button goes (Jupiter, Raydium, pump.fun, ...). PLACEHOLDER. */
     buy: 'https://example.com/REPLACE_WITH_BUY_LINK',
 
-    /** DEX chart (DexScreener, Birdeye, ...). PLACEHOLDER. */
-    chart: 'https://example.com/REPLACE_WITH_DEX_CHART_LINK',
+    /** DEX chart (DexScreener pair page). */
+    chart: 'https://dexscreener.com/solana/FjqAhBSdkceLQ9CcTqDgFKNLFZpNzHrxSpXcnSKLrTbW',
 
-    /** X (Twitter) profile. PLACEHOLDER. */
-    x: 'https://x.com/REPLACE_WITH_X_HANDLE',
+    /** X (Twitter) profile. */
+    x: 'https://x.com/tinfoilhatonx',
 
     /** Telegram group or channel. PLACEHOLDER. */
     telegram: 'https://t.me/REPLACE_WITH_TELEGRAM',
