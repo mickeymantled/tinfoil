@@ -301,6 +301,139 @@
   color: #b87f00;
 }
 
+/* Tool tiles (under the contract address) */
+.home-tools {
+  margin-top: 1rem;
+  text-align: left;
+}
+
+@media (min-width: 1024px) {
+  .home-tools {
+    max-width: 36rem; /* same width as the CA box */
+  }
+}
+
+.home-tools__label {
+  margin-bottom: 0.375rem;
+}
+
+.home-tools__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 0.5rem;
+}
+
+@media (min-width: 640px) {
+  .home-tools__list {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+.home-tools__item {
+  display: flex;
+  min-width: 0;
+}
+
+.home-tool {
+  position: relative;
+  flex: 1 1 auto;
+  min-width: 0;
+  min-height: 3.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 0.75rem;
+  background: #0e130e;
+  border: 1px solid #0f5c2a;
+  border-radius: 2px;
+  color: var(--body-text, #c9d8c9);
+  text-decoration: none;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease, background-color 0.15s ease;
+}
+
+.home-tool:hover {
+  border-color: #1fa64d;
+  background: #111811;
+  box-shadow: 0 0 14px rgba(61, 255, 122, 0.25);
+}
+
+.home-tool:focus-visible {
+  outline: 2px solid #ffb000;
+  outline-offset: 3px;
+  border-color: #3dff7a;
+}
+
+.home-tool__corner {
+  position: absolute;
+  width: 0.5rem;
+  height: 0.5rem;
+  border: 0 solid #3dff7a;
+  opacity: 0.75;
+  pointer-events: none;
+}
+.home-tool__corner--tl {
+  top: -1px;
+  left: -1px;
+  border-top-width: 2px;
+  border-left-width: 2px;
+}
+.home-tool__corner--br {
+  bottom: -1px;
+  right: -1px;
+  border-bottom-width: 2px;
+  border-right-width: 2px;
+}
+
+.home-tool:hover .home-tool__corner {
+  opacity: 1;
+}
+
+.home-tool__text {
+  flex: 1 1 auto;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.125rem;
+}
+
+.home-tool__title {
+  font-family: VT323, 'IBM Plex Mono', monospace;
+  font-size: 1.5rem;
+  line-height: 1;
+  letter-spacing: 0.03em;
+  color: #3dff7a;
+  text-shadow: 0 0 10px rgba(61, 255, 122, 0.4), 0 0 2px rgba(61, 255, 122, 0.6);
+  overflow-wrap: break-word; /* wrap at the space, never mid-word */
+}
+
+@media (min-width: 640px) {
+  .home-tool__title {
+    font-size: 1.3125rem;
+  }
+}
+
+.home-tool__line {
+  font-size: 0.8125rem;
+  line-height: 1.3;
+  color: var(--muted-text, #93a693);
+}
+
+.home-tool__arrow {
+  flex: 0 0 auto;
+  font-family: VT323, 'IBM Plex Mono', monospace;
+  font-size: 1.5rem;
+  line-height: 1;
+  color: #ffb000;
+  transition: transform 0.15s ease;
+}
+
+.home-tool:hover .home-tool__arrow {
+  transform: translateX(2px);
+}
+
 /* Contract address */
 .home-ca {
   margin-top: 1rem;
@@ -385,288 +518,13 @@
 /* ---------- Sections ---------- */
 
 .home-section {
-  margin-top: 4rem;
+  margin-top: 3rem;
 }
 
 @media (min-width: 640px) {
   .home-section {
-    margin-top: 6rem;
+    margin-top: 4rem;
   }
-}
-
-.home-section__title {
-  margin-top: 0.25rem;
-  font-size: 2.5rem;
-  line-height: 1;
-}
-
-@media (min-width: 640px) {
-  .home-section__title {
-    font-size: 3.25rem;
-  }
-}
-
-.home-section__lede {
-  margin-top: 0.375rem;
-  color: #c9d8c9;
-}
-
-/* ---------- Briefing ("WHAT IS THIS") ---------- */
-
-.home-brief__strip {
-  justify-content: space-between;
-  font-size: 1.125rem;
-}
-
-.home-brief__clearance {
-  font-size: 1rem;
-  color: #ffb000;
-}
-
-.home-brief__head {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-between;
-  gap: 0.75rem 1rem;
-}
-
-.home-brief__title {
-  font-size: 2.25rem;
-}
-
-@media (min-width: 640px) {
-  .home-brief__title {
-    font-size: 3rem;
-  }
-}
-
-.home-brief__body {
-  max-width: 70ch;
-  margin-top: 1.25rem;
-  font-family: 'IBM Plex Mono', ui-monospace, monospace;
-  font-size: 1rem;
-  line-height: 1.7;
-  color: var(--body-text, #c9d8c9);
-}
-
-.home-brief__body > p {
-  padding-left: 0.875rem;
-  border-left: 2px solid #0f5c2a;
-}
-
-.home-brief__body > p + p {
-  margin-top: 1rem;
-}
-
-.home-brief__body strong {
-  font-weight: 600;
-  color: #b4f5c8;
-}
-
-.home-brief__foot {
-  margin-top: 1.5rem;
-  padding-top: 0.75rem;
-  border-top: 1px dashed #0f5c2a;
-  font-size: 0.875rem;
-  color: #ffb000;
-}
-
-/* ---------- Feature exhibits ("CONNECT THE DOTS") ---------- */
-
-/*
- * The red signal trace is pure CSS. Each item owns a node dot, a short stub
- * from the dot to its panel, and (except the last) a segment that runs
- * 100% + gap to the next item's dot. Phones: dots in the grid's left gutter,
- * trace runs down. md+: dots above the panels, trace runs across.
- */
-.home-intel-grid {
-  --gap: 1.25rem;
-  --node: 0.625rem;
-  --trace: #ff2e2e;
-  list-style: none;
-  margin: 1.25rem 0 0;
-  padding: 0 0 0 1.25rem;
-  display: grid;
-  grid-template-columns: minmax(0, 1fr);
-  gap: var(--gap);
-}
-
-@media (min-width: 768px) {
-  .home-intel-grid {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    padding: 1.25rem 0 0;
-  }
-}
-
-.home-intel-item {
-  position: relative;
-  display: flex;
-  min-width: 0;
-}
-
-.home-intel__node {
-  position: absolute;
-  z-index: 1;
-  left: calc(-0.75rem - var(--node) / 2);
-  top: calc(1.75rem - var(--node) / 2);
-  width: var(--node);
-  height: var(--node);
-  border-radius: 9999px;
-  background: var(--trace);
-  box-shadow: 0 0 8px rgba(255, 46, 46, 0.85);
-  animation: home-node-pulse 2.4s ease-in-out infinite;
-}
-
-.home-intel-item:nth-child(2) .home-intel__node {
-  animation-delay: 0.8s;
-}
-.home-intel-item:nth-child(3) .home-intel__node {
-  animation-delay: 1.6s;
-}
-
-@keyframes home-node-pulse {
-  50% {
-    box-shadow: 0 0 14px rgba(255, 46, 46, 1);
-  }
-}
-
-/* stub: dot -> panel edge */
-.home-intel-item::after,
-.home-intel-item:not(:last-child)::before {
-  content: '';
-  position: absolute;
-  pointer-events: none;
-  background: var(--trace);
-  box-shadow: 0 0 4px rgba(255, 46, 46, 0.6);
-  opacity: 0.85;
-}
-
-.home-intel-item::after {
-  left: -0.75rem;
-  top: calc(1.75rem - 0.5px);
-  width: 0.75rem;
-  height: 1px;
-}
-
-/* segment: this dot -> next dot */
-.home-intel-item:not(:last-child)::before {
-  left: calc(-0.75rem - 0.5px);
-  top: 1.75rem;
-  width: 1px;
-  height: calc(100% + var(--gap));
-}
-
-@media (min-width: 768px) {
-  .home-intel__node {
-    left: calc(50% - var(--node) / 2);
-    top: calc(-0.75rem - var(--node) / 2);
-  }
-  .home-intel-item::after {
-    left: calc(50% - 0.5px);
-    top: -0.75rem;
-    width: 1px;
-    height: 0.75rem;
-  }
-  .home-intel-item:not(:last-child)::before {
-    left: 50%;
-    top: calc(-0.75rem - 0.5px);
-    width: calc(100% + var(--gap));
-    height: 1px;
-  }
-}
-
-.home-intel {
-  position: relative;
-  flex: 1 1 auto;
-  min-width: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-  padding: 1.5rem 1.25rem 1.25rem;
-  background: #0e130e;
-  border: 1px solid #0f5c2a;
-  border-radius: 2px;
-  color: var(--body-text, #c9d8c9);
-  text-decoration: none;
-  transition: border-color 0.15s ease, box-shadow 0.15s ease, background-color 0.15s ease;
-}
-
-.home-intel:hover {
-  border-color: #1fa64d;
-  background: #111811;
-  box-shadow: 0 0 18px rgba(61, 255, 122, 0.25);
-}
-
-.home-intel:focus-visible {
-  outline: 2px solid #ffb000;
-  outline-offset: 3px;
-  border-color: #3dff7a;
-}
-
-.home-intel__corner {
-  position: absolute;
-  width: 0.75rem;
-  height: 0.75rem;
-  border: 0 solid #3dff7a;
-  opacity: 0.8;
-  pointer-events: none;
-}
-.home-intel__corner--tl {
-  top: -1px;
-  left: -1px;
-  border-top-width: 2px;
-  border-left-width: 2px;
-}
-.home-intel__corner--tr {
-  top: -1px;
-  right: -1px;
-  border-top-width: 2px;
-  border-right-width: 2px;
-}
-.home-intel__corner--bl {
-  bottom: -1px;
-  left: -1px;
-  border-bottom-width: 2px;
-  border-left-width: 2px;
-}
-.home-intel__corner--br {
-  bottom: -1px;
-  right: -1px;
-  border-bottom-width: 2px;
-  border-right-width: 2px;
-}
-
-.home-intel:hover .home-intel__corner {
-  opacity: 1;
-}
-
-.home-intel__title {
-  font-size: 2rem;
-}
-
-.home-intel__copy {
-  font-size: 1rem;
-  line-height: 1.6;
-}
-
-/* status + CTA pinned to the bottom so rows line up across equal-height panels */
-.home-intel__status {
-  margin-top: auto;
-  padding-top: 0.5rem;
-  font-size: 0.75rem;
-  letter-spacing: 0.12em;
-  color: #ffb000;
-}
-
-.home-intel__cta {
-  align-self: flex-start;
-  margin-top: 0.25rem;
-}
-
-.home-intel:hover .home-intel__cta {
-  background: rgba(61, 255, 122, 0.1);
-  border-color: #3dff7a;
 }
 
 /* ---------- Latest incidents ---------- */
@@ -785,11 +643,11 @@
   .home-exhibit__hat {
     animation: none;
   }
-  .home-intel,
-  .home-intel__cta {
+  .home-tool,
+  .home-tool__arrow {
     transition: none;
   }
-  .home-intel__node {
-    animation: none;
+  .home-tool:hover .home-tool__arrow {
+    transform: none;
   }
 }

@@ -2,6 +2,7 @@ import { useId } from 'react';
 import { config, isPlaceholder } from '../../config';
 import { GlitchText } from '../../components/GlitchText';
 import { ContractAddress } from './ContractAddress';
+import { ToolLinks } from './ToolLinks';
 
 interface LinkDef {
   key: string;
@@ -97,6 +98,7 @@ export function Hero() {
         <p className="home-hero__tagline">{config.tagline}</p>
         <HeroLinks />
         <ContractAddress />
+        <ToolLinks />
       </div>
     </section>
   );
