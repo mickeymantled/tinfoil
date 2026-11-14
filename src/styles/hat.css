@@ -1,0 +1,280 @@
+/* Hat generator (FILE 002). All classes are prefixed hat-. */
+
+.hat-layout {
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: minmax(0, 1fr);
+  margin-top: 1.5rem;
+}
+@media (min-width: 1024px) {
+  .hat-layout {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 22rem);
+    align-items: start;
+  }
+}
+
+.hat-main,
+.hat-controls {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  min-width: 0;
+}
+
+/* ---------- stage ---------- */
+.hat-stage {
+  position: relative;
+  width: 100%;
+  max-width: 640px;
+  aspect-ratio: 1 / 1;
+  margin-inline: auto;
+  border: 1px solid #0f5c2a;
+  background:
+    repeating-conic-gradient(#0e130e 0% 25%, #080b08 0% 50%) 50% / 32px 32px;
+  box-shadow: 0 0 18px rgba(61, 255, 122, 0.12);
+  overflow: hidden;
+}
+@media (min-width: 1024px) {
+  .hat-main .hat-stage {
+    margin-inline: 0;
+  }
+}
+.hat-stage.is-dragover {
+  border-color: #3dff7a;
+  box-shadow: 0 0 24px rgba(61, 255, 122, 0.45);
+}
+
+.hat-canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+  /* The canvas handles every gesture itself: no page scroll, zoom or text selection while manipulating. */
+  touch-action: none;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
+  -webkit-tap-highlight-color: transparent;
+  cursor: move;
+}
+.hat-canvas:focus {
+  outline: none;
+}
+.hat-canvas:focus-visible {
+  outline: 2px solid #ffb000;
+  outline-offset: -2px;
+}
+
+.hat-dropzone,
+.hat-drop-hint,
+.hat-busy {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 1rem;
+}
+.hat-dropzone {
+  gap: 0.75rem;
+  background: rgba(8, 11, 8, 0.86);
+  border: 2px dashed rgba(61, 255, 122, 0.45);
+  margin: 0.5rem;
+  overflow-y: auto;
+}
+.hat-dropzone-title {
+  font-size: 2rem;
+  line-height: 1;
+}
+@media (min-width: 640px) {
+  .hat-dropzone-title {
+    font-size: 2.75rem;
+  }
+}
+.hat-dropzone-copy {
+  max-width: 28rem;
+  font-size: 0.9375rem;
+  line-height: 1.5;
+  color: #c9d8c9;
+}
+.hat-dropzone-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem;
+}
+.hat-drop-hint,
+.hat-busy {
+  background: rgba(8, 11, 8, 0.8);
+  color: #3dff7a;
+  font-family: VT323, 'IBM Plex Mono', ui-monospace, monospace;
+  font-size: 1.75rem;
+  letter-spacing: 0.06em;
+  pointer-events: none;
+}
+.hat-busy {
+  color: #ffb000;
+}
+
+/* very small phones: keep the dropzone buttons from overflowing the square */
+@media (max-width: 400px) {
+  .hat-dropzone {
+    gap: 0.5rem;
+    padding: 0.5rem;
+  }
+  .hat-dropzone-copy {
+    font-size: 0.8125rem;
+  }
+  .hat-dropzone-title {
+    font-size: 1.625rem;
+  }
+}
+
+/* ---------- text bits ---------- */
+.hat-hint {
+  font-size: 0.8125rem;
+  line-height: 1.45;
+  color: #8fa68f;
+}
+.hat-message {
+  border-left: 3px solid #ffb000;
+  background: rgba(255, 176, 0, 0.08);
+  color: #ffd98a;
+  padding: 0.5rem 0.75rem;
+  font-size: 0.875rem;
+  line-height: 1.45;
+}
+.hat-statusbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.25rem 1rem;
+}
+.hat-face-status {
+  font-family: VT323, 'IBM Plex Mono', ui-monospace, monospace;
+  font-size: 1.125rem;
+  letter-spacing: 0.05em;
+  color: #1fa64d;
+  white-space: nowrap;
+}
+.hat-error p {
+  line-height: 1.55;
+}
+.hat-error code {
+  color: #ffb000;
+  overflow-wrap: anywhere;
+}
+
+/* ---------- control groups ---------- */
+.hat-group-body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.875rem;
+}
+.hat-button-row,
+.hat-actions-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+.hat-actions-row > * {
+  flex: 1 1 auto;
+}
+.hat-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.hat-slider-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 0.5rem;
+  margin-bottom: 0.25rem;
+  font-size: 0.875rem;
+}
+.hat-readout {
+  font-family: VT323, 'IBM Plex Mono', ui-monospace, monospace;
+  font-size: 1.25rem;
+  color: #ffb000;
+  min-width: 3.5rem;
+  text-align: right;
+}
+
+.hat-toggle-row {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+.hat-toggle-row .toggle {
+  min-height: 44px;
+}
+
+.hat-picker {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+.hat-thumb {
+  width: 64px;
+  height: 64px;
+  padding: 4px;
+  border: 1px solid #0f5c2a;
+  background: #080b08;
+}
+.hat-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+.hat-thumb.is-active {
+  border-color: #3dff7a;
+  box-shadow: 0 0 12px rgba(61, 255, 122, 0.4);
+}
+.hat-thumb:focus-visible {
+  outline: 2px solid #ffb000;
+  outline-offset: 2px;
+}
+
+.hat-preview-row {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.hat-preview {
+  flex: none;
+  width: 112px;
+  height: 112px;
+  border-radius: 9999px;
+  border: 2px solid #1fa64d;
+  background: #080b08;
+  box-shadow: 0 0 14px rgba(61, 255, 122, 0.25);
+}
+
+.hat-export {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+.hat-export img {
+  flex: none;
+  width: 128px;
+  height: 128px;
+  border: 1px solid #0f5c2a;
+  /* allow the native long-press "Save image" menu here even though the canvas blocks it */
+  -webkit-touch-callout: default;
+}
+@media (max-width: 400px) {
+  .hat-export {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .hat-export img {
+    width: 100%;
+    height: auto;
+    max-width: 280px;
+  }
+}
