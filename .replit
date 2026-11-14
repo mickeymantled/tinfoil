@@ -1,0 +1,21 @@
+# Replit configuration for TINFOIL HAT
+# Run button: build the client + server, then start Express.
+run = "npm run build && npm start"
+entrypoint = "server/index.ts"
+
+# Node.js 20 toolchain
+modules = ["nodejs-20"]
+
+[nix]
+channel = "stable-24_05"
+
+# Published deployments: build once, then keep the server running.
+[deployment]
+build = ["sh", "-c", "npm run build"]
+run = ["sh", "-c", "npm start"]
+deploymentTarget = "cloudrun"
+
+# Express listens on process.env.PORT (fallback 3000) on 0.0.0.0.
+[[ports]]
+localPort = 3000
+externalPort = 80

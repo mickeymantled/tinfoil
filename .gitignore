@@ -1,0 +1,25 @@
+# dependencies
+node_modules
+
+# build output
+dist
+dist-server
+
+# runtime data written by the incident poller (recreated on start)
+data/incidents.json
+data/*.tmp
+
+# local env and OS noise
+.env
+.env.*
+.DS_Store
+*.log
+
+# Replit workspace internals
+.cache
+.upm
+.config
+.local
+
+# local tooling
+.claude

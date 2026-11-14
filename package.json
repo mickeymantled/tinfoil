@@ -1,0 +1,57 @@
+{
+  "name": "tinfoil-hat",
+  "version": "1.0.0",
+  "private": true,
+  "description": "TINFOIL HAT ($TINFOIL) - cyber incident coin: PFP hat generator, live incident monitor, grid-down survival guide.",
+  "type": "module",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "dev": "concurrently -k -n api,web -c green,yellow \"npm:dev:server\" \"npm:dev:client\"",
+    "dev:server": "tsx watch --clear-screen=false server/index.ts",
+    "dev:client": "vite",
+    "build": "npm run og && npm run build:client && npm run build:server",
+    "build:client": "vite build",
+    "build:server": "esbuild server/index.ts --bundle --platform=node --target=node20 --format=esm --packages=external --outfile=dist-server/index.js --log-level=warning",
+    "start": "NODE_ENV=production node dist-server/index.js",
+    "og": "tsx scripts/generate-og.ts",
+    "hat:prepare": "tsx scripts/prepare-hat.ts",
+    "typecheck": "tsc -p tsconfig.json --noEmit && tsc -p tsconfig.server.json --noEmit",
+    "test": "tsx --test server/*.test.ts src/hat/*.test.ts"
+  },
+  "dependencies": {
+    "@fontsource/ibm-plex-mono": "^5.2.5",
+    "@fontsource/special-elite": "^5.2.5",
+    "@fontsource/vt323": "^5.2.5",
+    "@mediapipe/tasks-vision": "^1.2.3",
+    "@resvg/resvg-js": "^2.6.2",
+    "@types/compression": "^1.8.1",
+    "@types/express": "^5.0.6",
+    "@types/node": "^20.17.0",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "@vitejs/plugin-react": "^4.7.0",
+    "autoprefixer": "^10.4.20",
+    "compression": "^1.8.1",
+    "entities": "^6.0.0",
+    "esbuild": "^0.25.0",
+    "express": "^5.1.0",
+    "postcss": "^8.5.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "react-router-dom": "^7.6.0",
+    "rss-parser": "^3.13.0",
+    "satori": "^0.12.0",
+    "tailwindcss": "^3.4.19",
+    "tsx": "^4.20.0",
+    "typescript": "^5.9.3",
+    "vite": "^6.4.6"
+  },
+  "devDependencies": {
+    "@types/pngjs": "^6.0.5",
+    "concurrently": "^9.1.0",
+    "jpeg-js": "^0.4.4",
+    "pngjs": "^7.0.0"
+  }
+}
